@@ -14,8 +14,8 @@ export default class Header extends Component {
     render() {
       if (this.props.isAuth) {
         return (
-          <Navbar bg="light" expand="lg" fixed='top'>
-              <Navbar.Brand href="/" style={{fontFamily: 'Alegreya Sans SC, sans-serif'}}>
+          <Navbar expand="lg">
+              <Navbar.Brand href="/">
               <img
                 alt=""
                 src={logo}
@@ -27,18 +27,18 @@ export default class Header extends Component {
               </Navbar.Brand>
               <Navbar.Toggle />
               <Navbar.Collapse className="justify-content-end">
-                <Navbar.Text style={{marginRight: '15px'}}>
+                <Navbar.Text style={{marginRight: '15px', color: 'black'}}>
                   {this.props.username}
                 </Navbar.Text>
-                <Button variant='danger' onClick={this.handleLogout}>Logout</Button>
+                <Button variant='secondary' onClick={this.handleLogout}>Logout</Button>
               </Navbar.Collapse>
           </Navbar>
         );
       }
       else {
         return (
-          <Navbar bg="light" expand="lg" fixed='top'>
-              <Navbar.Brand href="/" style={{fontFamily: 'Alegreya Sans SC, sans-serif'}}>
+          <Navbar expand="lg" fixed='top'>
+              <Navbar.Brand href="/">
               <img
                 alt=""
                 src={logo}

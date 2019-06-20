@@ -8,7 +8,7 @@ export default class FormUser extends Component {
             <Container className='d-flex justify-content-center align-items-center' style={{ height: '100vh' , flexDirection: 'column'}}>
                 <Container id='whatsWrong' style={{maxWidth: '500px', position: 'fixed', top: '70px', zIndex: 1, fontSize : '0.75em'}}/>
                 <Card>
-                    <Card.Header>{this.props.typeform.toUpperCase()}</Card.Header>
+                    <Card.Header as='h1'>{this.props.typeform.toUpperCase()}</Card.Header>
                     <Form style={{ padding: 20 }} onSubmit={this.props.handleSubmit}>
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label>Username</Form.Label>

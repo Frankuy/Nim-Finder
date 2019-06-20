@@ -1,12 +1,18 @@
 import * as Data from './Data';
 
 export const getFakultas = value => {
-  if (Data.fakultas.has(value.substring(0,3))) {
-    return Data.fakultas.get(value.substring(0,3))
-  }
-  else {
-    return 'None'
-  }
+    for (const [k,v] of Data.prodi) {
+      if (v.includes(value)) {
+        return Data.fakultas.get(k)
+      }
+    }
+    return 'None';
+  // if (Data.fakultas.has(value.substring(0,3))) {
+  //   return Data.fakultas.get(value.substring(0,3))
+  // }
+  // else {
+  //   return 'None'
+  // }
 }
 
 export const getListNamaFakultas = () => {
@@ -18,5 +24,9 @@ export const getListNamaFakultas = () => {
 }
 
 export const getListProdi = value => {
-  return Data.prodi.get(value);
+  for (const [k,v] of Data.fakultas) {
+    if (v === value) {
+      return Data.prodi.get(k);
+    }
+  }
 }

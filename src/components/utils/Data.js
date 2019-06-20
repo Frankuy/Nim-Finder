@@ -15,55 +15,55 @@ export const fakultas = new Map([
 ]);
 
 const fmipa = [
-  'Matematika', 'Fisika', 'Astronomi', 'Kimia', 'Aktuaria'
+  'Matematika', 'Fisika', 'Astronomi', 'Kimia', 'Aktuaria', 'Tahap Tahun Pertama FMIPA'
 ];
 
 const siths = [
-  'Biologi', 'Mikrobiologi'
+  'Biologi', 'Mikrobiologi', 'Tahap Tahun Pertama SITH-S'
 ];
 
 const sithr = [
-  'Rekayasa Hayati', 'Rekayasa Pertanian', 'Rekayasa Kehutanan', 'Teknologi Pasca Panen'
+  'Rekayasa Hayati', 'Rekayasa Pertanian', 'Rekayasa Kehutanan', 'Teknologi Pasca Panen', 'Tahap Tahun Pertama SITH-R'
 ]
 
 const sf = [
-  'Sains and Teknologi Farmasi', 'Farmasi Klinik dan Komunitas'
+  'Sains dan Teknologi Farmasi', 'Farmasi Klinik dan Komunitas', 'Tahap Tahun Pertama SF'
 ]
 
 const fitb = [
-  'Teknologi Geologi', 'Teknik Geodesi dan Geomatika', 'Meteorologi', 'Oseanografi'
+  'Teknik Geologi', 'Teknik Geodesi dan Geomatika', 'Meteorologi', 'Oseanografi', 'Tahap Tahun Pertama FITB'
 ]
 
 const fttm = [
-  'Teknik Pertambangan', 'Teknik Perminyakan', 'Teknik Geofisika', 'Teknik Metalurgi'
+  'Teknik Pertambangan', 'Teknik Perminyakan', 'Teknik Geofisika', 'Teknik Metalurgi', 'Tahap Tahun Pertama FTTM'
 ]
 
 const fti = [
-  'Teknik Pangan', 'Teknik Bioenergi dan Kemurgi', 'Teknik Fisika', 'Teknik Kimia', 'Teknik Industri', 'Manajemen Rekayasa Industri'
+  'Teknik Pangan', 'Teknik Bioenergi dan Kemurgi', 'Teknik Fisika', 'Teknik Kimia', 'Teknik Industri', 'Manajemen Rekayasa Industri', 'Tahap Tahun Pertama FTI'
 ]
 
 const stei = [
-  'Teknik Elektro', 'Teknik Informatika', 'Teknik Tenaga Listrik', 'Teknik Telekomunikasi', 'Sistem dan Teknologi Informasi', 'Teknik Biomedis'
+  'Teknik Elektro', 'Teknik Informatika', 'Teknik Tenaga Listrik', 'Teknik Telekomunikasi', 'Sistem dan Teknologi Informasi', 'Teknik Biomedis', 'Tahap Tahun Pertama STEI'
 ]
 
 const ftmd = [
-  'Teknik Mesin', 'Teknik Dirgantara', 'Teknik Material'
+  'Teknik Mesin', 'Aeronautika dan Astronotika', 'Teknik Material', 'Tahap Tahun Pertama FTMD'
 ]
 
 const ftsl = [
-  'Teknik Sipil', 'Teknik Lingkungan', 'Teknik Kelautan', 'Teknik dan Pengelolaan Sumber Daya Air', 'Rekayasa Infrastruktur Lingkungan'
+  'Teknik Sipil', 'Teknik Lingkungan', 'Teknik Kelautan', 'Teknik dan Pengelolaan Sumber Daya Air', 'Rekayasa Infrastruktur Lingkungan', 'Tahap Tahun Pertama FTSL'
 ]
 
 const sappk = [
-  'Arsitektur', 'Perencanaan Wilayah dan Kota'
+  'Arsitektur', 'Perencanaan Wilayah dan Kota', 'Tahap Tahun Pertama SAPPK'
 ]
 
 const fsrd = [
-  'Seni Rupa', 'Kria', 'Desain Interior', 'Desain Komunikasi Visual', 'Desain Produk'
+  'Seni Rupa', 'Kriya', 'Desain Interior', 'Desain Komunikasi Visual', 'Desain Produk', 'Tahap Tahun Pertama FSRD'
 ]
 
 const sbm = [
-  'Manajemen', 'Kewirausahaan'
+  'Manajemen', 'Kewirausahaan', 'Tahap Tahun Pertama SBM'
 ]
 
 export const prodi = new Map();

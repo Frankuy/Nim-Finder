@@ -86,7 +86,7 @@ export default class Home extends Component {
           },
           {
             Header : 'Fakultas',
-            accessor : 'nim_tpb',
+            accessor : 'prodi',
             id: 'fakultas',
             Cell : ({value}) => Utils.getFakultas(value),
             minWidth : 50,
@@ -95,8 +95,17 @@ export default class Home extends Component {
                 return true;
               }
               else {
-                return row[filter.id].startsWith(filter.value);
+                return Utils.getFakultas(row[filter.id]) === filter.value;
               }
+            },
+            sortMethod: (a, b, desc) => {
+              if (Utils.getFakultas(a) > Utils.getFakultas(b)) {
+                return 1;
+              }
+              if (Utils.getFakultas(a) < Utils.getFakultas(b)) {
+                return -1;
+              }
+              return 0;
             },
             Filter: ({ filter, onChange }) =>
               <select
@@ -108,7 +117,7 @@ export default class Home extends Component {
                 <option value='all'>Show All</option>
                 {
                   Utils.getListNamaFakultas().map(
-                    el => <option value={el['kode']} key={el['kode']}>{el['nama']}</option>
+                    el => <option value={el['nama']} key={el['kode']}>{el['nama']}</option>
                   )
                 }
               </select>
@@ -144,31 +153,34 @@ export default class Home extends Component {
         ]
         return (
             <>
-                <Header isAuth={true} username={this.props.username}/>
-            
-                <Container style={{marginTop: '80px', maxWidth: '800px'}}>
-                    <InputGroup>
-                        <FormControl
-                          placeholder="Enter NIM or name"
-                          type='text'
-                          onChange={this.searchChange}
-                        />
-                        <InputGroup.Append>
-                            <Button type='submit' variant="outline-secondary" onClick={this.handleSearch}><FontAwesomeIcon icon={faSearch}/></Button>
-                        </InputGroup.Append>
-                    </InputGroup>
-                </Container>
+                <Header isAuth={true} username={this.props.username} />
 
-                <Container style={{marginTop : '20px', marginBottom: '50px'}}>
-                  {
-                    !this.state.firstSearch && 
-                    <ReactTable 
-                      data={this.state.data} 
-                      columns={columns} 
-                      filterable
-                      defaultPageSize={10}
-                    />
-                  }
+                <Container style={{height: '100vh', paddingTop: this.state.firstSearch ? '200px' : '20px'}}>
+                  <Container style={{maxWidth: '800px'}}>
+                      <InputGroup>
+                          <FormControl
+                            placeholder="Enter NIM or name"
+                            type='text'
+                            onChange={this.searchChange}
+                          />
+                          <InputGroup.Append>
+                              <Button type='submit' variant="secondary" onClick={this.handleSearch}><FontAwesomeIcon icon={faSearch}/></Button>
+                          </InputGroup.Append>
+                      </InputGroup>
+                  </Container>
+                  <Container style={{padding : '20px'}}>
+                    {
+                      !this.state.firstSearch && 
+                      <ReactTable 
+                        className='-highlight'
+                        style={{background : 'white'}}
+                        data={this.state.data} 
+                        columns={columns} 
+                        filterable
+                        defaultPageSize={10}
+                      />
+                    }
+                  </Container>
                 </Container>
             </>
         )
