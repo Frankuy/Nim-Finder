@@ -7,6 +7,7 @@ export default class Header extends Component {
     handleLogout = (event) => {
       event.preventDefault();
       cookie.remove('username');
+      cookie.remove('token');
       window.location.href = '/'
     }
 

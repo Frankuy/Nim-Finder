@@ -6,9 +6,12 @@ import cookie from 'react-cookies';
 import { Alert } from 'react-bootstrap';
 
 export default class Login extends Component {
-    state = {
-        username: '',
-        password: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        }
     }
 
     usernameChange = (event) => {
@@ -39,7 +42,7 @@ export default class Login extends Component {
         .then(resJson =>
         {
             if (resJson.code !== 0) {
-                ReactDOM.render(<Alert variant='danger'>{resJson.status}</Alert>, document.getElementById('whatsWrong'));
+                ReactDOM.render(<Alert variant='danger' style={{boxShadow : '0px 0px 5px #888888'}}>{resJson.status}</Alert>, document.getElementById('whatsWrong'));
             }
             else {
                 cookie.save(

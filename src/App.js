@@ -10,7 +10,7 @@ import cookie from 'react-cookies';
 
 export default class App extends Component {
   render() {
-    if (cookie.load('username') === undefined) {
+    if (cookie.load('token') === undefined) {
       return (
         <Router>
           <Switch>

@@ -5,9 +5,12 @@ import FormUser from '../common/FormUser';
 import { Alert } from 'react-bootstrap';
 
 export default class Register extends Component {
-    state = {
-        username: '',
-        password: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        }
     }
 
     usernameChange = (event) => {
