@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Header from '../common/Header';
 import FormUser from '../common/FormUser';
 import cookie from 'react-cookies';
+import { Alert } from 'react-bootstrap';
 
 export default class Login extends Component {
     state = {
@@ -21,11 +23,37 @@ export default class Login extends Component {
 
     handleLogin = (event) => {
         event.preventDefault();
-        cookie.save(
-            'username',
-            this.state.username
-        )
-        window.location.href = '/home'
+        const formData = new URLSearchParams();
+        formData.append('username', this.state.username);
+        formData.append('password', this.state.password);
+        const request = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData.toString(),
+            json: true,
+        }
+        fetch('https://api.stya.net/nim/login',  request)
+        .then(response => response.json())
+        .then(resJson =>
+        {
+            if (resJson.code !== 0) {
+                ReactDOM.render(<Alert variant='danger'>{resJson.status}</Alert>, document.getElementById('whatsWrong'));
+            }
+            else {
+                cookie.save(
+                    'username',
+                    this.state.username
+                )
+                cookie.save(
+                    'token',
+                    resJson.token
+                )
+                window.location.href = '/home';
+            }
+        }
+        );
     }
 
     render() {

@@ -5,7 +5,8 @@ import NavLink from 'react-bootstrap/NavLink';
 export default class FormUser extends Component {
     render() {
         return (
-            <Container className='d-flex justify-content-center align-items-center' style={{ height: '100vh' }}>
+            <Container className='d-flex justify-content-center align-items-center' style={{ height: '100vh' , flexDirection: 'column'}}>
+                <Container id='whatsWrong' style={{maxWidth: '1000px', position: 'fixed', top: '80px'}}/>
                 <Card>
                     <Card.Header>{this.props.typeform.toUpperCase()}</Card.Header>
                     <Form style={{ padding: 20 }} onSubmit={this.props.handleSubmit}>
