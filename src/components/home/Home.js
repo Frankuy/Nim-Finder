@@ -24,6 +24,7 @@ const columns = [{
 
 export default class Home extends Component {
     state = {
+        // data: []
         data : [
             {
                 name: 'Tanner Linsley',
@@ -65,8 +66,10 @@ export default class Home extends Component {
                     </InputGroup>
                 </Container>
 
-                <Container style={{marginTop : '20px', marginBottom: '20px'}}>
-                  <ReactTable data={this.state.data} columns={columns} />
+                <Container style={{marginTop : '20px', marginBottom: '50px'}}>
+                  {
+                    this.state.data.length !== 0 && <ReactTable data={this.state.data} columns={columns} />
+                  }
                 </Container>
             </>
         )

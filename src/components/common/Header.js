@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { Navbar, Button, Container } from 'react-bootstrap';
+import { Navbar, Button } from 'react-bootstrap';
 import logo from '../../assets/img/logo.svg';
+import cookie from 'react-cookies';
 
 export default class Header extends Component {    
+    handleLogout = (event) => {
+      event.preventDefault();
+      cookie.remove('username');
+      window.location.href = '/'
+    }
+
     render() {
       if (this.props.isAuth) {
         return (
@@ -22,7 +29,7 @@ export default class Header extends Component {
                 <Navbar.Text style={{marginRight: '15px'}}>
                   {this.props.username}
                 </Navbar.Text>
-                <Button variant='danger'>Logout</Button>
+                <Button variant='danger' onClick={this.handleLogout}>Logout</Button>
               </Navbar.Collapse>
           </Navbar>
         );
