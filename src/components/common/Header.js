@@ -29,7 +29,7 @@ export default class Header extends Component {
       if (this.props.isAuth) {
         return (
           <Navbar expand="lg" fixed='top'>
-              <Navbar.Brand href="/">
+              <Navbar.Brand href="https://github.com/Frankuy/Nim-Finder">
               <img
                 alt=""
                 src={logo}
@@ -52,7 +52,7 @@ export default class Header extends Component {
       else {
         return (
           <Navbar expand="lg" fixed='top'>
-              <Navbar.Brand href="/">
+              <Navbar.Brand href="https://github.com/Frankuy/Nim-Finder">
               <img
                 alt=""
                 src={logo}
