@@ -45,6 +45,18 @@ body {
     color : #1B2845;
 }
 
+.ReactTable .rt-thead .rt-th.-sort-desc, .ReactTable .rt-thead .rt-td.-sort-desc {
+    box-shadow: inset 0 -3px 0 0 rgba(255,255,255,0.6);
+}
+
+.ReactTable .rt-thead .rt-th.-sort-asc, .ReactTable .rt-thead .rt-td.-sort-asc {
+    box-shadow: inset 0 3px 0 0 rgba(255,255,255,0.6);
+}
+
+.ReactTable {
+    border: none;
+}
+
 .ReactTable .-pagination .-btn {
     color: #fff;
     background: #6c757d;
