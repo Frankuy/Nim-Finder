@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Nim-Finder/static/css/main.b8bed287.chunk.css",
+    "main.js": "/Nim-Finder/static/js/main.111a3b2a.chunk.js",
+    "main.js.map": "/Nim-Finder/static/js/main.111a3b2a.chunk.js.map",
+    "runtime~main.js": "/Nim-Finder/static/js/runtime~main.934d47fc.js",
+    "runtime~main.js.map": "/Nim-Finder/static/js/runtime~main.934d47fc.js.map",
+    "static/css/2.d4b275d9.chunk.css": "/Nim-Finder/static/css/2.d4b275d9.chunk.css",
+    "static/js/2.00f8ef45.chunk.js": "/Nim-Finder/static/js/2.00f8ef45.chunk.js",
+    "static/js/2.00f8ef45.chunk.js.map": "/Nim-Finder/static/js/2.00f8ef45.chunk.js.map",
+    "index.html": "/Nim-Finder/index.html",
+    "precache-manifest.613fa90765ca5d7c06650a2ccdcf9752.js": "/Nim-Finder/precache-manifest.613fa90765ca5d7c06650a2ccdcf9752.js",
+    "service-worker.js": "/Nim-Finder/service-worker.js",
+    "static/css/2.d4b275d9.chunk.css.map": "/Nim-Finder/static/css/2.d4b275d9.chunk.css.map",
+    "static/css/main.b8bed287.chunk.css.map": "/Nim-Finder/static/css/main.b8bed287.chunk.css.map",
+    "static/media/logo.svg": "/Nim-Finder/static/media/logo.5aa1d951.svg"
+  }
+}
