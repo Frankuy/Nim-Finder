@@ -4,13 +4,15 @@ import Header from '../common/Header';
 import FormUser from '../common/FormUser';
 import cookie from 'react-cookies';
 import { Alert } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            isAuth: false,
         }
     }
 
@@ -53,20 +55,33 @@ export default class Login extends Component {
                     'token',
                     resJson.token
                 )
-                window.location.href = '/home';
+                this.setState({isAuth : true});
             }
         }
         );
     }
 
     render() {
-        return (
-            <>
-                <Header isAuth={false} />
-                <FormUser typeform='Login' handleSubmit={this.handleLogin} usernameChange={this.usernameChange} passwordChange={this.passwordChange} goTo='/register'>
-                    Don't have account? Register
-                </FormUser>
-            </>
-        );
+        if (cookie.load('token')  !== undefined) {
+            return (
+                <Redirect to='/home' />
+            );
+        }
+        
+        if (this.state.isAuth) {
+            return (
+                <Redirect to='/home' />
+            );
+        }
+        else {
+            return (
+                <>
+                    <Header isAuth={false} />
+                    <FormUser typeform='Login' handleSubmit={this.handleLogin} usernameChange={this.usernameChange} passwordChange={this.passwordChange} goTo='/register'>
+                        Don't have account? Register
+                    </FormUser>
+                </>
+            );
+        }
     }
 }

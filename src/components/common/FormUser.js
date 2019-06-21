@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
-import NavLink from 'react-bootstrap/NavLink';
+import { Link } from 'react-router-dom';
 
 export default class FormUser extends Component {
     render() {
         return (
             <Container className='d-flex justify-content-center align-items-center' style={{ height: '100vh' , flexDirection: 'column'}}>
-                <Container id='whatsWrong' style={{maxWidth: '500px', position: 'fixed', top: '70px', zIndex: 1, fontSize : '0.75em'}}/>
+                <Container id='whatsWrong' style={{maxWidth: '500px', position: 'fixed', top: '50px', zIndex: 1, fontSize : '0.75em'}}/>
                 <Card>
                     <Card.Header as='h1'>{this.props.typeform.toUpperCase()}</Card.Header>
                     <Form style={{ padding: 20 }} onSubmit={this.props.handleSubmit}>
@@ -24,8 +24,9 @@ export default class FormUser extends Component {
                             {this.props.typeform}
                         </Button>
                     </Form>
-                    <Container>
-                        <NavLink style={{fontSize: '0.75em', textAlign: 'center'}} href={this.props.goTo}>{this.props.children}</NavLink>
+                    <Container style={{textAlign : 'center', paddingBottom : '10px'}}>
+                        <Link className='nav-link' to={this.props.goTo} style={{fontSize: '0.75em'}}>{this.props.children}</Link>
+                        {/* <NavLink style={{fontSize: '0.75em', textAlign: 'center'}} href={this.props.goTo}>{this.props.children}</NavLink> */}
                     </Container>
                 </Card>
             </Container>

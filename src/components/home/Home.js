@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../common/Header';
+import Unauthorized from '../error/Unauthorized';
 import ReactTable from 'react-table';
 import { Container, InputGroup, FormControl, Button } from 'react-bootstrap';
 import 'react-table/react-table.css';
@@ -8,6 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import * as Utils from '../utils/Utils';
 import $ from 'jquery';
 import cookie from 'react-cookies';
+import { Redirect } from 'react-router-dom';
 
 export default class Home extends Component {
     constructor(props) {
@@ -15,13 +17,20 @@ export default class Home extends Component {
       this.state = {
         data: [],
         search: '',
-        firstSearch : true
+        firstSearch : true,
+        tokenValid : true
       }
     }
     
     searchChange = (event) => {
       event.preventDefault();
       this.setState({search : event.target.value});
+    }
+
+    enterSearch = (event) => {
+      if (event.keyCode === 13) {
+        document.getElementById('searchButton').click()
+      }
     }
 
     handleSearch = (event) => {
@@ -40,7 +49,7 @@ export default class Home extends Component {
           if (resJson.code === -2) { //Token not valid anymore
             cookie.remove('token')
             cookie.remove('username')
-            window.location.href = '/'
+            this.setState({tokenValid : false});
           }
           else {
             this.setState({data : resJson.payload , firstSearch : false})
@@ -151,20 +160,33 @@ export default class Home extends Component {
               </select>
           }
         ]
+        if (cookie.load('token') === undefined) {
+          return (
+            <Unauthorized />
+          );
+        }
+        
+        if (!this.state.tokenValid) {
+          return (
+            <Redirect to='/'/>
+          );
+        }
         return (
             <>
                 <Header isAuth={true} username={this.props.username} />
 
-                <Container style={{height: '100vh', paddingTop: this.state.firstSearch ? '200px' : '20px'}}>
+                <Container style={{height: '100vh', paddingTop: this.state.firstSearch ? '200px' : '80px'}}>
                   <Container style={{maxWidth: '800px'}}>
                       <InputGroup>
                           <FormControl
                             placeholder="Enter NIM or name"
                             type='text'
                             onChange={this.searchChange}
+                            onKeyDown={this.enterSearch}
+                            id='searchBox'
                           />
                           <InputGroup.Append>
-                              <Button type='submit' variant="secondary" onClick={this.handleSearch}><FontAwesomeIcon icon={faSearch}/></Button>
+                              <Button id='searchButton' type='submit' variant="secondary" onClick={this.handleSearch}><FontAwesomeIcon icon={faSearch}/></Button>
                           </InputGroup.Append>
                       </InputGroup>
                   </Container>
@@ -172,7 +194,7 @@ export default class Home extends Component {
                     {
                       !this.state.firstSearch && 
                       <ReactTable 
-                        className='-highlight'
+                        className='-highlight  -striped'
                         style={{background : 'white'}}
                         data={this.state.data} 
                         columns={columns} 
@@ -183,6 +205,6 @@ export default class Home extends Component {
                   </Container>
                 </Container>
             </>
-        )
+        );
     }
 }

@@ -4,7 +4,7 @@
 }
 
 body { 
-    background: linear-gradient(#65AFFF, #335C81) no-repeat center center fixed; 
+    background: linear-gradient(#65AFFF, rgb(51, 92, 129)) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -14,6 +14,12 @@ body {
 .navbar-brand {
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 1.5em;
+}
+
+.navbar.solid {
+    background-color:rgba(101, 175, 255, 0.9);
+    transition: background-color 1s ease 0s;
+    box-shadow: 0 0 4px grey;
 }
 
 .card {
@@ -37,4 +43,16 @@ body {
 
 .nav-link:hover {
     color : #1B2845;
+}
+
+.ReactTable .-pagination .-btn {
+    color: #fff;
+    background: #6c757d;
+    border-color: #6c757d;
+}
+
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+    color: #fff;
+    background: #5a6268;
+    border-color: #545b62;
 }

@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import Header from '../common/Header';
 import FormUser from '../common/FormUser';
 import { Alert } from 'react-bootstrap';
+import cookie from 'react-cookies';
+import { Redirect } from 'react-router-dom';
 
 export default class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            isRegister : false
         }
     }
 
@@ -25,8 +28,6 @@ export default class Register extends Component {
 
     handleRegister = (event) => {
         event.preventDefault();
-        console.log(this.state.username)
-        console.log(this.state.password)
         const formData = new URLSearchParams();
         formData.append('username', this.state.username);
         formData.append('password', this.state.password);
@@ -43,24 +44,36 @@ export default class Register extends Component {
         .then(resJson =>
         {
             if (resJson.code !== 0) {
-                console.log(resJson.status)
                 ReactDOM.render(<Alert variant='danger'>{resJson.status}</Alert>, document.getElementById('whatsWrong'));
             }
             else {
-                window.location.href = '/'
+                this.setState({ isRegister : true});
             }
         }
         );
     }
     
     render() {
-        return (
-            <>
-                <Header isAuth={false}/>
-                <FormUser typeform='Register' handleSubmit={this.handleRegister} usernameChange={this.usernameChange} passwordChange={this.passwordChange} goTo='/'>
-                    Have an account? Login
-                </FormUser>
-            </>
-        );
+        if (cookie.load('token') !== undefined) {
+            return (
+                <Redirect to='/home' />
+            );
+        }
+
+        if (this.state.isRegister) {
+            return (
+                <Redirect to='/' />
+            );
+        }
+        else {
+            return (
+                <>
+                    <Header isAuth={false}/>
+                    <FormUser typeform='Register' handleSubmit={this.handleRegister} usernameChange={this.usernameChange} passwordChange={this.passwordChange} goTo='/'>
+                        Have an account? Login
+                    </FormUser>
+                </>
+            );
+        }
     }
 }

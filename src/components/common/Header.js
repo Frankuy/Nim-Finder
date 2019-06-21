@@ -2,19 +2,33 @@ import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import logo from '../../assets/img/logo.svg';
 import cookie from 'react-cookies';
+import { Redirect } from 'react-router-dom';
 
 export default class Header extends Component {    
+    constructor(props) {
+      super(props);
+      this.state = {
+        wantLogOut : false
+      }
+    }
+
     handleLogout = (event) => {
       event.preventDefault();
       cookie.remove('username');
       cookie.remove('token');
-      window.location.href = '/'
+      this.setState({wantLogOut : true, });
     }
 
     render() {
+      if (this.state.wantLogOut) {
+        return (
+          <Redirect to='/' />
+        );
+      }
+
       if (this.props.isAuth) {
         return (
-          <Navbar expand="lg">
+          <Navbar expand="lg" fixed='top'>
               <Navbar.Brand href="/">
               <img
                 alt=""
@@ -25,7 +39,7 @@ export default class Header extends Component {
               />
                 Nim Finder
               </Navbar.Brand>
-              <Navbar.Toggle />
+              <Navbar.Toggle id='navbarButton'/>
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text style={{marginRight: '15px', color: 'black'}}>
                   {this.props.username}
